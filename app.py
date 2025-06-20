@@ -7,7 +7,7 @@ from data.districts import districts, areas
 
 app = Flask(__name__)
 app.secret_key = 'секретный_ключ'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///instance/database.db'
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 db = SQLAlchemy(app)
