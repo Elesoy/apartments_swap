@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="text-xl font-bold mb-4">{{ listing.address }}</h2>
+{% if listing.photo %}
+  <img src="{{ listing.photo }}" class="mb-4 rounded max-w-md">
+{% endif %}
+<p><strong>Район:</strong> {{ listing.district }}</p>
+<p><strong>Округ:</strong> {{ listing.area }}</p>
+<p><strong>Комнат:</strong> {{ listing.rooms }}</p>
+<p><strong>Площадь:</strong> {{ listing.size }} м²</p>
+<p><strong>Тип обмена:</strong> {{ listing.exchange_type }}</p>
+<p><strong>Описание:</strong> {{ listing.description }}</p>
+<p><strong>Контакт:</strong> {{ listing.contact }}</p>
+<a href="{{ url_for('index') }}" class="text-blue-600 block mt-4">← Назад</a>
+{% endblock %}

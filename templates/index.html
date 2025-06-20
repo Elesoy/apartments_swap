@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Главная{% endblock %}
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Поиск</h2>
+<form method="GET" class="mb-6 flex flex-wrap gap-4">
+  <select name="district" class="border p-2 rounded">
+    <option value="">Все районы</option>
+    {% for d in districts %}
+      <option value="{{ d }}" {% if d == selected_district %}selected{% endif %}>{{ d }}</option>
+    {% endfor %}
+  </select>
+  <select name="exchange_type" class="border p-2 rounded">
+    <option value="">Все типы</option>
+    <option value="Меняю квартиру + доплата">Меняю квартиру + доплата</option>
+    <option value="На квартиру + доплата">На квартиру + доплата</option>
+    <option value="Равнозначный обмен">Равнозначный обмен</option>
+  </select>
+  <button class="bg-blue-600 text-white px-4 py-2 rounded">Искать</button>
+</form>
+<h2 class="text-xl font-semibold mb-4">Объявления</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+  {% for l in listings %}
+    <div class="bg-white p-4 shadow rounded-lg">
+      <a href="{{ url_for('view_listing', listing_id=l.id) }}">
+        <h3 class="text-lg font-bold">{{ l.address }}</h3>
+        <p class="text-sm text-gray-600">{{ l.district }} • {{ l.exchange_type }}</p>
+        {% if l.photo %}
+          <img src="{{ l.photo }}" class="mt-2 rounded w-full max-h-48 object-cover">
+        {% endif %}
+        <p class="mt-2">{{ l.description[:100] }}...</p>
+      </a>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

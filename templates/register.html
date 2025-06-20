@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="text-xl mb-4">Регистрация</h2>
+<form method="POST" class="space-y-4">
+  <input name="name" placeholder="Имя" class="border p-2 w-full"><br>
+  <input name="email" placeholder="Email" class="border p-2 w-full"><br>
+  <input type="password" name="password" placeholder="Пароль" class="border p-2 w-full"><br>
+  <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Зарегистрироваться</button>
+</form>
+{% endblock %}
